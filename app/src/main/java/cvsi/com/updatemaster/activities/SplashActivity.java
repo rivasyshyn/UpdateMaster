@@ -13,7 +13,7 @@ import cvsi.com.updatemaster.R;
 public class SplashActivity extends Activity {
 
     private Handler mHandler;
-    private final int mTimeout = 1000; //1 sec.
+    private final int mTimeout = 700; //1 sec.
     private boolean shown = false;
 
     @Override

@@ -31,7 +31,6 @@ import cvsi.com.updatemaster.dialogs.SettingsDialog;
 
 public class MainActivity extends FragmentActivity implements SettingsDialog.OnSettingsChangedListener, AbstractViewController.OnItemSelectedListener, ErrorDialog.OnActionListener {
 
-    private Resource mResource;
     private String mRepoUrl;
     private ProgressBar mProgressBar;
 
@@ -47,7 +46,7 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
         SharedPreferences sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
         mRepoUrl = sharedPreferences.getString("repository", getString(R.string.default_repository));
 
-        update();
+        update(null);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -120,7 +119,7 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
     private void onRefreshAction() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        update();
+        update(null);
     }
 
     @Override
@@ -130,13 +129,13 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
             sharedPreferences.edit().putString("repository", url).commit();
             mRepoUrl = url;
         }
-        update();
+        update(null);
     }
 
-    private void update() {
+    private void update(String url) {
         mProgressBar.setVisibility(View.VISIBLE);
         Ion.with(this)
-                .load(mRepoUrl)
+                .load(url != null ? url : mRepoUrl)
                 .progressBar(mProgressBar)
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>() {
@@ -147,11 +146,11 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
                             displayError();
                             return;
                         }
-                        mResource = new GsonBuilder()
+
+                        updateView(new GsonBuilder()
                                 .excludeFieldsWithoutExposeAnnotation()
                                 .create()
-                                .fromJson(result, Resource.class);
-                        updateView(mResource);
+                                .fromJson(result, Resource.class));
                     }
                 });
 
@@ -194,7 +193,11 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
 
     @Override
     public void onItemSelected(Resource resource) {
-        updateView(resource);
+        if (resource.getType() != Resource.ResourceType.PACKAGE && !TextUtils.isEmpty(resource.getUrl())) {
+            update(resource.getUrl());
+        } else {
+            updateView(resource);
+        }
     }
 
     @Override

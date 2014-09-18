@@ -5,7 +5,8 @@
         <item name="android:actionBarStyle">@style/App.ActionBarTheme</item>
         <item name="appButtonBarStyle">?android:attr/buttonBarStyle</item>
         <item name="appButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-        <item name="android:popupMenuStyle">@style/App.PopupMenuStyle</item>
+        <item name="android:actionDropDownStyle">@style/App.ActionDropDownStyle</item>
+        <item name="android:popupMenuStyle">@style/App.PopupStyle</item>
     </style>
 
     <style name="App.ActionBarTheme" parent="android:Widget.Holo.ActionBar">
@@ -16,9 +17,15 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
     </style>
+    
+    <style name="App.ActionDropDownStyle" parent="android:Widget.Holo.Spinner">
+        <item name="android:background">@color/accent_dark</item>
+        <item name="android:popupBackground">@color/accent_dark</item>
+    </style>
 
-    <style name="App.PopupMenuStyle" parent="android:Widget.PopupMenu">
-        <item name="android:popupBackground">@drawable/app_menu_dropdown_panel</item>
+    <style name="App.PopupStyle" parent="android:Widget.Holo.PopupMenu">
+        <item name="android:background">@color/accent_dark</item>
+        <item name="android:popupBackground">@color/accent_dark</item>
     </style>
 
 </resources>

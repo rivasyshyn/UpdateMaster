@@ -5,7 +5,8 @@
         <item name="android:actionBarStyle">@style/App.ActionBarTheme</item>
         <item name="appButtonBarStyle">?android:attr/buttonBarStyle</item>
         <item name="appButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-        <item name="android:popupMenuStyle">@style/App.PopupMenuStyle</item>
+        <item name="android:actionDropDownStyle">@style/App.ActionDropDownStyle</item>
+        <item name="android:popupMenuStyle">@style/App.PopupStyle</item>
     </style>
 
     <style name="App.ActionBarTheme" parent="android:Widget.Holo.ActionBar">
