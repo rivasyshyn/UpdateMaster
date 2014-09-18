@@ -1,17 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="BaseAppTheme" parent="android:Theme.Light">
+    <style name="App.BaseTheme" parent="android:Theme.Light">
         <item name="appButtonBarStyle">@null</item>
         <item name="appButtonBarButtonStyle">@null</item>
     </style>
 
-    <style name="AppTheme" parent="BaseAppTheme">
+    <style name="App.Theme" parent="App.BaseTheme">
         <item name="android:windowBackground">@color/light_gray</item>
         <item name="android:colorBackground">@color/light_gray</item>
     </style>
 
-    <style name="AppTheme.NoTitle" parent="AppTheme">
+    <style name="App.Theme.NoTitle" parent="App.Theme">
         <item name="android:windowNoTitle">true</item>
     </style>
 
