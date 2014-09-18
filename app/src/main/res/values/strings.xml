@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Update Master</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">Updates List</string>
+    <string name="splash_message">Update Master %s</string>
+    <string name="setting_url_lable">Url: </string>
+    <string name="test">ipsum loreine ipsum loreine ipsum loreine ipsum loreine  ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine</string>
+    <string name="install">Install</string>
+    <string name="error">Error</string>
+    <string name="err_cant_display">Can\'t display data</string>
+    <string name="ok">Ok</string>
+    <string name="go_back">Go Back</string>
+    <string name="err_cant_load_package">Can\'t load package</string>
+
+</resources>

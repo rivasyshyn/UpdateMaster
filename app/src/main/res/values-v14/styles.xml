@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/AppActionBarTheme</item>
+        <item name="appButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="appButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="AppActionBarTheme" parent="android:Widget.Holo.ActionBar">
+        <item name="android:background">@color/accent</item>
+        <item name="android:backgroundStacked">@color/accent</item>
+        <item name="android:backgroundSplit">@color/accent</item>
+        <item name="android:titleTextStyle">@android:style/TextAppearance.Holo.Widget.ActionBar.Title.Inverse</item>
+        <item name="android:subtitleTextStyle">@android:style/TextAppearance.Holo.Widget.ActionBar.Subtitle.Inverse</item>
+    </style>
+
+</resources>

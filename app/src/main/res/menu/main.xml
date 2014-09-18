@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="cvsi.com.updatemaster.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@android:drawable/stat_notify_sync_noanim"
+        android:orderInCategory="10"
+        android:showAsAction="ifRoom"
+        android:title="Refresh" />
+</menu>
