@@ -16,11 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cvsi.updatemaster.R;
 import com.cvsi.updatemaster.data.Resource;
 import com.cvsi.updatemaster.dialogs.ErrorDialog;
+import com.cvsi.updatemaster.utils.SelfUpdateUtil;
 
 /**
  * Created by rivasyshyn on 17.09.2014.
@@ -31,9 +33,20 @@ public class PackageFragment extends AbstractViewController {
     TextView tvTitle;
     TextView tvDesc;
     Button btInstall;
+    LinearLayout llExt;
+    TextView tvVersion;
+    TextView tvChangelog;
+    ImageView ivStatus;
     private long mLastLoadId;
     private String mLastUpdateName;
+    private SelfUpdateUtil mUpdateUtil;
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mUpdateUtil = new SelfUpdateUtil();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +56,12 @@ public class PackageFragment extends AbstractViewController {
         tvTitle = (TextView) v.findViewById(R.id.tv_title);
         tvDesc = (TextView) v.findViewById(R.id.tv_desc);
         btInstall = (Button) v.findViewById(R.id.btn_install);
+
+        llExt = (LinearLayout) v.findViewById(R.id.ll_extras);
+        tvChangelog = (TextView) v.findViewById(R.id.tv_changelog);
+        tvVersion = (TextView) v.findViewById(R.id.tv_version);
+        ivStatus = (ImageView) v.findViewById(R.id.iv_status);
+
 
         super.onCreateView(inflater, container, savedInstanceState);
         return v;
@@ -67,6 +86,20 @@ public class PackageFragment extends AbstractViewController {
                 }
             }
         });
+
+        if (resource.getPackageInfo() == null) {
+            llExt.setVisibility(View.GONE);
+        } else {
+            tvVersion.setText(getString(R.string.version, resource.getPackageInfo().getApkVersion()));
+            tvChangelog.setText(resource.getPackageInfo().getReleaseNotes());
+            SelfUpdateUtil.UpdateInfo updateInfo = mUpdateUtil.getUpdateInfo(getActivity(), resource.getPackageInfo());
+            ivStatus.setImageResource(
+                    updateInfo.getStatus() == SelfUpdateUtil.Status.EQUAL ?
+                            R.drawable.circle_green :
+                            (updateInfo.getStatus() == SelfUpdateUtil.Status.LESS ?
+                                    R.drawable.circle_yellow :
+                                    R.drawable.circle_red));
+        }
 
     }
 

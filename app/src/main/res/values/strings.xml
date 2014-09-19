@@ -14,5 +14,7 @@
     <string name="ok">Ok</string>
     <string name="go_back">Go Back</string>
     <string name="err_cant_load_package">Can\'t load package</string>
+    <string name="version">v: %s</string>
+    <string name="changes">changes:</string>
 
 </resources>

@@ -123,10 +123,10 @@ public class SelfUpdateUtil {
 
             int val = localApkVersion.compareTo(remoteVersion);
 
-            updateInfo.status = val == 0 ? Status.EQUAL : (val > 0 ? Status.GREAT : Status.LESS);
+            updateInfo.status = val == 0 ? Status.EQUAL : (val > 0 ? Status.LESS : Status.GREAT);
         }
 
-        if(updateInfo.status == Status.GREAT) {
+        if (updateInfo.status == Status.GREAT) {
             updateInfo.isUpdateAvailable = true;
         }
 
@@ -219,10 +219,15 @@ public class SelfUpdateUtil {
                 } else if (another.components[i] instanceof Integer) {
                     return -1;
                 } else {
-                    return 0;
+                    return components[i].toString().compareTo(another.components[i].toString());
                 }
             }
-
+            if (components.length > another.components.length) {
+                return 1;
+            }
+            if (components.length < another.components.length) {
+                return -1;
+            }
             return 0;
         }
     }

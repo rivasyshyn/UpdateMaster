@@ -3,5 +3,10 @@
     <color name="accent">#5577cc</color>
     <color name="accent_dark">#224499</color>
     <color name="light_gray">#ccc</color>
+    <color name="gray">#666</color>
+
+    <color name="red">#c32</color>
+    <color name="green">#492</color>
+    <color name="yellow">#aa3</color>
 
 </resources>

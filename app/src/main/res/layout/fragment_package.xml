@@ -43,13 +43,63 @@
                 android:text="@string/test"
                 android:textStyle="italic" />
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/ll_extras">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="10dp"
+                        android:id="@+id/iv_status"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/circle_red" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/version"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/tv_version" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/changes"
+                        android:textColor="@color/accent_dark"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/test"
+                        android:textColor="@color/gray"
+                        android:textStyle="italic"
+                        android:id="@+id/tv_changelog" />
+                </LinearLayout>
+            </LinearLayout>
+
             <Button
+                android:id="@+id/btn_install"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/install"
                 android:layout_gravity="right"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:id="@+id/btn_install" />
+                android:text="@string/install" />
 
 
         </LinearLayout>
