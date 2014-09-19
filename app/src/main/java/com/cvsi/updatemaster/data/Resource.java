@@ -1,4 +1,4 @@
-package cvsi.com.updatemaster.data;
+package com.cvsi.updatemaster.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by rivasyshyn on 16.09.2014.
  */
 
-public class Resource implements Parcelable {
+public class Resource implements Parcelable, Item {
 
     public Resource() {
         resources = new ArrayList<Resource>(3);
@@ -25,7 +25,7 @@ public class Resource implements Parcelable {
         name = source.readString();
         description = source.readString();
         url = source.readString();
-
+        packageInfo = source.readParcelable(PackageInfo.class.getClassLoader());
         int size = source.readInt();
         Resource[] res = new Resource[size];
         source.readTypedArray(res, CREATOR);
@@ -45,6 +45,7 @@ public class Resource implements Parcelable {
         dest.writeString(name);
         dest.writeString(description);
         dest.writeString(url);
+        dest.writeParcelable(packageInfo, flags);
         dest.writeInt(resources.size());
         dest.writeTypedArray(resources.toArray(new Resource[0]), flags);
     }
@@ -61,8 +62,16 @@ public class Resource implements Parcelable {
         }
     };
 
+    public PackageInfo getPackageInfo() {
+        return packageInfo;
+    }
+
+    public void setPackageInfo(PackageInfo packageInfo) {
+        this.packageInfo = packageInfo;
+    }
+
     public static enum ResourceType {
-        REPOSITORY, APPLICATION, PACKAGE
+        ITEM, PACKAGE
     }
 
     @Expose
@@ -78,6 +87,8 @@ public class Resource implements Parcelable {
 
     @Expose
     private List<Resource> resources;
+    @Expose
+    private PackageInfo packageInfo;
 
     public ResourceType getType() {
         return type;

@@ -1,4 +1,4 @@
-package cvsi.com.updatemaster;
+package com.cvsi.updatemaster;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

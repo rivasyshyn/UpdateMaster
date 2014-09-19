@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply from: "../keystore.properties"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -9,21 +9,51 @@ dependencies {
 }
 
 android {
-
     compileSdkVersion 19
     buildToolsVersion "19.1.0"
 
     defaultConfig {
-        applicationId "cvsi.com.updatemaster"
+        applicationId "com.cvsi.updatemaster"
         minSdkVersion 8
         targetSdkVersion 19
         versionCode 1
         versionName "0.1"
     }
+
+    signingConfigs {
+        release {
+            keyAlias keyAlias_release
+            keyPassword keyPassword_release
+            storeFile file(storeFile_release)
+            storePassword storePassword_release
+        }
+    }
+
     buildTypes {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
+
+    applicationVariants.all { variant ->
+
+        def apk = variant.outputFile;
+        def newName;
+
+        if (variant.buildType.name == "release") {
+            newName = apk.name.replace(".apk", "-v" + defaultConfig.versionName + ".apk");
+        } else {
+            newName = apk.name.replace(".apk", "-v" + defaultConfig.versionName + ".apk");
+        }
+
+        variant.outputFile = new File(apk.parentFile, newName);
+
+        if (variant.zipAlign) {
+            variant.outputFile = new File(apk.parentFile, newName.replace("-unaligned", ""));
+        }
+
+    }
+
 }

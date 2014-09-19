@@ -1,4 +1,4 @@
-package cvsi.com.updatemaster.activities;
+package com.cvsi.updatemaster.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
-import cvsi.com.updatemaster.BuildConfig;
-import cvsi.com.updatemaster.R;
+import com.cvsi.updatemaster.BuildConfig;
+import com.cvsi.updatemaster.R;
 
 
 public class SplashActivity extends Activity {

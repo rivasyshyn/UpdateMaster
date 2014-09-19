@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context="cvsi.com.updatemaster.MainActivity">
+    tools:context="com.cvsi.updatemaster.MainActivity">
 
     <FrameLayout
         android:id="@+id/container"

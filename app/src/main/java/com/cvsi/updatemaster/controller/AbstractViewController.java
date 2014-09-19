@@ -1,4 +1,4 @@
-package cvsi.com.updatemaster.controller;
+package com.cvsi.updatemaster.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cvsi.com.updatemaster.data.Resource;
+import com.cvsi.updatemaster.data.Resource;
 
 /**
  * Created by rivasyshyn on 17.09.2014.

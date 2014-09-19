@@ -1,4 +1,4 @@
-package cvsi.com.updatemaster.controller;
+package com.cvsi.updatemaster.controller;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import cvsi.com.updatemaster.R;
-import cvsi.com.updatemaster.data.Resource;
-import cvsi.com.updatemaster.dialogs.ErrorDialog;
+import com.cvsi.updatemaster.R;
+import com.cvsi.updatemaster.data.Resource;
+import com.cvsi.updatemaster.dialogs.ErrorDialog;
 
 /**
  * Created by rivasyshyn on 17.09.2014.

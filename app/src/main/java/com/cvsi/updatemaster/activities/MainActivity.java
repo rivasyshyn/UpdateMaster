@@ -1,4 +1,4 @@
-package cvsi.com.updatemaster.activities;
+package com.cvsi.updatemaster.activities;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -20,13 +20,13 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-import cvsi.com.updatemaster.R;
-import cvsi.com.updatemaster.controller.AbstractViewController;
-import cvsi.com.updatemaster.controller.ListFragment;
-import cvsi.com.updatemaster.controller.PackageFragment;
-import cvsi.com.updatemaster.data.Resource;
-import cvsi.com.updatemaster.dialogs.ErrorDialog;
-import cvsi.com.updatemaster.dialogs.SettingsDialog;
+import com.cvsi.updatemaster.R;
+import com.cvsi.updatemaster.controller.AbstractViewController;
+import com.cvsi.updatemaster.controller.ListFragment;
+import com.cvsi.updatemaster.controller.PackageFragment;
+import com.cvsi.updatemaster.data.Resource;
+import com.cvsi.updatemaster.dialogs.ErrorDialog;
+import com.cvsi.updatemaster.dialogs.SettingsDialog;
 
 
 public class MainActivity extends FragmentActivity implements SettingsDialog.OnSettingsChangedListener, AbstractViewController.OnItemSelectedListener, ErrorDialog.OnActionListener {
@@ -161,7 +161,7 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
     }
 
     private void updateView(Resource resource) {
-        Fragment fragment = getCorespondeFragment(resource);
+        Fragment fragment = getCorespondentFragment(resource);
         if (fragment == null) {
             ErrorDialog.show(this,
                     getString(R.string.error),
@@ -176,8 +176,8 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
 
     }
 
-    private Fragment getCorespondeFragment(Resource resource) {
-        if (resource.getType() == Resource.ResourceType.REPOSITORY || resource.getType() == Resource.ResourceType.APPLICATION) {
+    private Fragment getCorespondentFragment(Resource resource) {
+        if (resource.getType() == Resource.ResourceType.ITEM) {
             Bundle bundle = new Bundle();
             bundle.putParcelable("data", resource);
             return Fragment.instantiate(this, ListFragment.class.getName(), bundle);

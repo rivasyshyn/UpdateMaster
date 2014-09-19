@@ -1,4 +1,4 @@
-package cvsi.com.updatemaster.dialogs;
+package com.cvsi.updatemaster.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import cvsi.com.updatemaster.R;
+import com.cvsi.updatemaster.R;
 
 /**
  * Created by rivasyshyn on 17.09.2014.

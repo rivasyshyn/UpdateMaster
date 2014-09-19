@@ -1,8 +1,7 @@
-package cvsi.com.updatemaster.dialogs;
+package com.cvsi.updatemaster.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -13,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import cvsi.com.updatemaster.R;
+import com.cvsi.updatemaster.R;
 
 /**
  * Created by rivasyshyn on 18.09.2014.
