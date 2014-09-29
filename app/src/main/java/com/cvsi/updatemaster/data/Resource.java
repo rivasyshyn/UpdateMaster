@@ -13,7 +13,7 @@ import java.util.List;
  * Created by rivasyshyn on 16.09.2014.
  */
 
-public class Resource implements Parcelable, Item {
+public class Resource implements Parcelable {
 
     public Resource() {
         resources = new ArrayList<Resource>(3);

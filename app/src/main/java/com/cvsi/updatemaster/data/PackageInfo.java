@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 /**
 * Created by rivasyshyn on 19.09.2014.
 */
-public class PackageInfo implements Parcelable, Item {
+public class PackageInfo implements Parcelable {
 
     @Expose
     @SerializedName("apk_version")

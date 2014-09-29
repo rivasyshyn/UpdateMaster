@@ -7,7 +7,7 @@
     <string name="title_activity_main">Updates List</string>
     <string name="splash_message">Update Master %s</string>
     <string name="setting_url_lable">Url: </string>
-    <string name="test">ipsum loreine ipsum loreine ipsum loreine ipsum loreine  ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine ipsum loreine</string>
+    <string name="test">ipsum loreine a ipsum loreine ipsum big loreine ipsum fot loreine the ipsum loreine ipsum loreine a ipsum loreine ipsum loreine ipsum the loreine ipsum loreine ipsum with loreine ipsum loreine a ipsum loreine ipsum the loreine ipsum loreine ipsum loreine ipsum loreine a ipsum loreine ipsum loreine ipsum loreine</string>
     <string name="install">Install</string>
     <string name="error">Error</string>
     <string name="err_cant_display">Can\'t display data</string>
@@ -16,5 +16,6 @@
     <string name="err_cant_load_package">Can\'t load package</string>
     <string name="version">v: %s</string>
     <string name="changes">changes:</string>
+    <string name="open">Open</string>
 
 </resources>

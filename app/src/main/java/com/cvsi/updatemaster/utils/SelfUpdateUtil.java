@@ -111,10 +111,13 @@ public class SelfUpdateUtil {
 
     public UpdateInfo getUpdateInfo(Context context, PackageInfo packageInfo) {
 
+        PackageManager packageManager = context.getPackageManager();
+
         UpdateInfo updateInfo = new UpdateInfo();
         updateInfo.status = Status.NONE;
         updateInfo.info = packageInfo;
-        updateInfo.currentVersion = getLocalAppVersion(context, packageInfo.getPackageName());
+        updateInfo.currentVersion = getLocalAppVersion(packageManager, packageInfo.getPackageName());
+        updateInfo.launchIntent = packageManager.getLaunchIntentForPackage(packageInfo.getPackageName());
 
         if (updateInfo.currentVersion != null) {
 
@@ -133,9 +136,7 @@ public class SelfUpdateUtil {
         return updateInfo;
     }
 
-    private String getLocalAppVersion(Context context, String applicationId) {
-
-        PackageManager packageManager = context.getPackageManager();
+    private String getLocalAppVersion(PackageManager packageManager, String applicationId) {
 
         List<android.content.pm.PackageInfo> installedPackages = packageManager.getInstalledPackages(PackageManager.GET_ACTIVITIES);
 
@@ -237,6 +238,7 @@ public class SelfUpdateUtil {
         Status status;
         PackageInfo info;
         String currentVersion;
+        private Intent launchIntent;
 
         public Boolean isUpdateAvailable() {
             return isUpdateAvailable;
@@ -252,6 +254,14 @@ public class SelfUpdateUtil {
 
         public Status getStatus() {
             return status;
+        }
+
+        public Intent getLaunchIntent() {
+            return launchIntent;
+        }
+
+        public void setLaunchIntent(Intent launchIntent) {
+            this.launchIntent = launchIntent;
         }
     }
 

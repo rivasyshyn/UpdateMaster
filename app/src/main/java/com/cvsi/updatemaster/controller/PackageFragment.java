@@ -33,6 +33,7 @@ public class PackageFragment extends AbstractViewController {
     TextView tvTitle;
     TextView tvDesc;
     Button btInstall;
+    Button btOpen;
     LinearLayout llExt;
     TextView tvVersion;
     TextView tvChangelog;
@@ -56,6 +57,7 @@ public class PackageFragment extends AbstractViewController {
         tvTitle = (TextView) v.findViewById(R.id.tv_title);
         tvDesc = (TextView) v.findViewById(R.id.tv_desc);
         btInstall = (Button) v.findViewById(R.id.btn_install);
+        btOpen = (Button) v.findViewById(R.id.btn_open);
 
         llExt = (LinearLayout) v.findViewById(R.id.ll_extras);
         tvChangelog = (TextView) v.findViewById(R.id.tv_changelog);
@@ -89,16 +91,32 @@ public class PackageFragment extends AbstractViewController {
 
         if (resource.getPackageInfo() == null) {
             llExt.setVisibility(View.GONE);
+            btOpen.setVisibility(View.GONE);
         } else {
             tvVersion.setText(getString(R.string.version, resource.getPackageInfo().getApkVersion()));
             tvChangelog.setText(resource.getPackageInfo().getReleaseNotes());
-            SelfUpdateUtil.UpdateInfo updateInfo = mUpdateUtil.getUpdateInfo(getActivity(), resource.getPackageInfo());
+            final SelfUpdateUtil.UpdateInfo updateInfo = mUpdateUtil.getUpdateInfo(getActivity(), resource.getPackageInfo());
             ivStatus.setImageResource(
                     updateInfo.getStatus() == SelfUpdateUtil.Status.EQUAL ?
                             R.drawable.circle_green :
                             (updateInfo.getStatus() == SelfUpdateUtil.Status.LESS ?
                                     R.drawable.circle_yellow :
                                     R.drawable.circle_red));
+
+            if (updateInfo.getStatus() == SelfUpdateUtil.Status.NONE) {
+                btOpen.setVisibility(View.GONE);
+            } else {
+                btOpen.setVisibility(View.VISIBLE);
+                btOpen.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            getActivity().startActivity(updateInfo.getLaunchIntent());
+                        } catch (Exception e) {
+                        }
+                    }
+                });
+            }
         }
 
     }

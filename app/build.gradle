@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'maven-publish'
 apply from: "../keystore.properties"
 
 dependencies {
@@ -17,7 +18,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 19
         versionCode 1
-        versionName "0.3"
+        versionName "0.3.1"
     }
 
     signingConfigs {
@@ -35,7 +36,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
+
+        debug {
+            versionNameSuffix " D"
+            applicationIdSuffix '.debug'
+        }
     }
+
+//    def bundleRelease = {
+//        applicationVariants.all { variant ->
+//            if(variant.name == "release"){
+//                return variant.outputFile
+//            }
+//        }
+//    }
 
     applicationVariants.all { variant ->
 
@@ -50,10 +64,27 @@ android {
 
         variant.outputFile = new File(apk.parentFile, newName);
 
-        if (variant.zipAlign) {
-            variant.outputFile = new File(apk.parentFile, newName.replace("-unaligned", ""));
-        }
+//        if (variant.zipAlign) {
+//            variant.outputFile = new File(apk.parentFile, newName.replace("-unaligned", ""));
+//        }
 
     }
 
+//    android.applicationVariants
+//    publishing {
+//        publications {
+//            localPublication(MavenPublication) {
+//                artifact {
+//                    source: bundleRelease
+//                    extension: 'apk'
+//                }
+//            }
+//        }
+//        repositories {
+//            mavenLocal()
+//        }
+//    }
+
 }
+
+
