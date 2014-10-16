@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="default_repository">default_value</string>
-
     <string name="app_name">Update Master</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -19,5 +17,7 @@
     <string name="version">v: %s</string>
     <string name="changes">changes:</string>
     <string name="open">Open</string>
+    <string name="action_about">About</string>
+    <string name="action_refresh">Refresh</string>
 
 </resources>

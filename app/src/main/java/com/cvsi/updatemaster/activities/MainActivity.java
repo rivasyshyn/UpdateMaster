@@ -3,6 +3,7 @@ package com.cvsi.updatemaster.activities;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,26 +14,32 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
 
 import com.cvsi.updatemaster.R;
 import com.cvsi.updatemaster.controller.AbstractViewController;
 import com.cvsi.updatemaster.controller.ListFragment;
 import com.cvsi.updatemaster.controller.PackageFragment;
+import com.cvsi.updatemaster.controller.RemoteImageProvider;
 import com.cvsi.updatemaster.data.Resource;
 import com.cvsi.updatemaster.dialogs.ErrorDialog;
 import com.cvsi.updatemaster.dialogs.SettingsDialog;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+import com.squareup.picasso.Picasso;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
-public class MainActivity extends FragmentActivity implements SettingsDialog.OnSettingsChangedListener, AbstractViewController.OnItemSelectedListener, ErrorDialog.OnActionListener {
+public class MainActivity extends FragmentActivity implements SettingsDialog.OnSettingsChangedListener, AbstractViewController.OnItemSelectedListener, ErrorDialog.OnActionListener, RemoteImageProvider {
 
     private String mRepoUrl;
     private ProgressBar mProgressBar;
+    Picasso mPicasso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +48,22 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        setupActionBar();
-
         SharedPreferences sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
         mRepoUrl = sharedPreferences.getString("repository", getString(R.string.default_repository));
+
+        mPicasso = Picasso.with(this);
 
         update(null);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    private void setupActionBar() {
+    private void setupActionBar(boolean show) {
         try {
             ActionBar actionBar = getActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(show);
+            //actionBar.setDisplayShowHomeEnabled(show);
             try {
-                actionBar.setHomeButtonEnabled(true);
+                actionBar.setHomeButtonEnabled(show);
             } catch (Exception e) {
             }
         } catch (Exception e) {
@@ -104,11 +111,17 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
             return true;
         }
 
+        if (id == R.id.action_about) {
+            SplashActivity.startAsAbout(this);
+            return true;
+        }
+
         if (id == android.R.id.home) {
             if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
                 getSupportFragmentManager().popBackStack();
-            } else {
-                onRefreshAction();
+                if (getSupportFragmentManager().getBackStackEntryCount() == 2) {
+                    setupActionBar(false);
+                }
             }
             return true;
         }
@@ -172,7 +185,10 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment).addToBackStack(null).commit();
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_right, R.anim.slide_in_left, R.anim.slide_out_left)
+                .replace(R.id.container, fragment)
+                .addToBackStack(null).commit();
 
     }
 
@@ -198,10 +214,18 @@ public class MainActivity extends FragmentActivity implements SettingsDialog.OnS
         } else {
             updateView(resource);
         }
+        setupActionBar(true);
     }
 
     @Override
     public void onAction(ErrorDialog.Action action) {
 
+    }
+
+    @Override
+    public void loadImage(ImageView view, String url) {
+        try {
+            mPicasso.load(Uri.parse(url)).into(view);
+        }catch (Exception e) {}
     }
 }

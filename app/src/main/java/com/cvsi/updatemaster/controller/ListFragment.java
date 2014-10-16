@@ -85,6 +85,8 @@ public class ListFragment extends AbstractViewController {
             ViewHolder viewHolder = (ViewHolder) convertView.getTag();
             Resource resource = (Resource) getItem(position);
 
+            viewHolder.img.setImageDrawable(null);
+            loadImage(viewHolder.img, resource.getIcon());
             viewHolder.title.setText(resource.getName());
             viewHolder.desc.setText(resource.getDescription());
 

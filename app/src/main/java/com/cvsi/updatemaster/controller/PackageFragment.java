@@ -72,6 +72,7 @@ public class PackageFragment extends AbstractViewController {
     @Override
     protected void updateView(Resource resource) {
 
+        loadImage(ivLogo, resource.getIcon());
         tvTitle.setText(resource.getName());
         tvDesc.setText(resource.getDescription());
         btInstall.setOnClickListener(new View.OnClickListener() {

@@ -4,9 +4,12 @@
     <style name="App.BaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/App.ActionBarTheme</item>
         <item name="appButtonBarStyle">?android:attr/buttonBarStyle</item>
-        <item name="appButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-        <item name="android:actionDropDownStyle">@style/App.ActionDropDownStyle</item>
-        <item name="android:popupMenuStyle">@style/App.PopupStyle</item>
+        <item name="appButtonBarButtonStyle">@style/ButtonStyle.Borderless</item>
+        <!--<item name="android:actionDropDownStyle">@style/App.ActionDropDownStyle</item>-->
+        <item name="android:popupMenuStyle">@style/PopupMenu.Example</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Example</item>
+
+        <item name="android:actionBarWidgetTheme">@style/App.Widget</item>
     </style>
 
     <style name="App.ActionBarTheme" parent="android:Widget.Holo.ActionBar">

@@ -50,7 +50,7 @@ public class Resource implements Parcelable {
         dest.writeTypedArray(resources.toArray(new Resource[0]), flags);
     }
 
-    private static Creator<Resource> CREATOR = new Creator<Resource>() {
+    public static Creator<Resource> CREATOR = new Creator<Resource>() {
         @Override
         public Resource createFromParcel(Parcel source) {
             return new Resource(source);

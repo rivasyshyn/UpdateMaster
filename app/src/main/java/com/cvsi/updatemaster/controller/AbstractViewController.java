@@ -6,13 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.cvsi.updatemaster.data.Resource;
 
 /**
  * Created by rivasyshyn on 17.09.2014.
  */
-public abstract class AbstractViewController extends Fragment {
+public abstract class AbstractViewController extends Fragment implements RemoteImageProvider {
 
     private Resource mData;
 
@@ -24,7 +25,7 @@ public abstract class AbstractViewController extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getData();
 
-        if(mData != null){
+        if (mData != null) {
             updateView(mData);
         }
         return null;
@@ -44,6 +45,13 @@ public abstract class AbstractViewController extends Fragment {
             mData = getArguments().getParcelable("data");
         }
         return mData;
+    }
+
+    @Override
+    public void loadImage(ImageView view, String url) {
+        if (getActivity() instanceof RemoteImageProvider) {
+            ((RemoteImageProvider) getActivity()).loadImage(view, url);
+        }
     }
 
     protected abstract void updateView(Resource resource);

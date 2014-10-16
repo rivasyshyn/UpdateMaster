@@ -3,14 +3,17 @@
     <!-- Base application theme. -->
     <style name="App.BaseTheme" parent="android:Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/App.ActionBarTheme</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Example</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Example</item>
+
         <item name="appButtonBarStyle">?android:attr/buttonBarStyle</item>
-        <item name="appButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-        <item name="android:actionDropDownStyle">@style/App.ActionDropDownStyle</item>
-        <item name="android:popupMenuStyle">@style/App.PopupStyle</item>
+        <item name="appButtonBarButtonStyle">@style/ButtonStyle.Borderless</item>
+
+        <!--<item name="android:actionDropDownStyle">@style/App.ActionDropDownStyle</item>-->
     </style>
 
     <style name="App.ActionBarTheme" parent="android:Widget.Holo.ActionBar">
-        <item name="android:background">@color/accent</item>
+        <item name="android:background">?colorAccent</item>
     </style>
 
     <style name="App.Theme.NoTitle" parent="App.Theme">
@@ -18,14 +21,36 @@
         <item name="android:windowActionBar">false</item>
     </style>
     
-    <style name="App.ActionDropDownStyle" parent="android:Widget.Holo.Spinner">
-        <item name="android:background">@color/accent_dark</item>
-        <item name="android:popupBackground">@color/accent_dark</item>
+    <!--<style name="App.ActionDropDownStyle" parent="android:Widget.Holo.Spinner">-->
+        <!--<item name="android:background">?colorAccentDark</item>-->
+        <!--<item name="android:popupBackground">?colorAccentDark</item>-->
+    <!--</style>-->
+
+    <!--<style name="App.PopupStyle" parent="android:Widget.Holo.PopupMenu">-->
+        <!--<item name="android:background">?colorAccentDark</item>-->
+        <!--<item name="android:popupBackground">?colorAccentDark</item>-->
+    <!--</style>-->
+
+    <style name="PopupMenu.Example" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">?colorAccentLight</item>
+        <!--<item name="android:background">?colorAccent</item>-->
     </style>
 
-    <style name="App.PopupStyle" parent="android:Widget.Holo.PopupMenu">
-        <item name="android:background">@color/accent_dark</item>
-        <item name="android:popupBackground">@color/accent_dark</item>
+    <style name="DropDownNav.Example" parent="@android:style/Widget.Holo.Spinner">
+        <item name="android:popupBackground">?colorAccentLight</item>
+        <!--<item name="android:background">?colorAccent</item>-->
+    </style>
+
+    <style name="ButtonStyle" parent="android:Widget.Holo.Light.Button">
+        <item name="android:textColor">?colorAccentDark</item>
+    </style>
+
+    <style name="ButtonStyle.Borderless" parent="android:Widget.Holo.Button.Borderless">
+        <item name="android:textColor">?colorAccent</item>
+    </style>
+
+    <style name="App.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Example</item>
     </style>
 
 </resources>

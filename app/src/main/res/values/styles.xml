@@ -3,16 +3,24 @@
     <!-- Base application theme. -->
     <style name="App.BaseTheme" parent="android:Theme.Light">
         <item name="appButtonBarStyle">@null</item>
-        <item name="appButtonBarButtonStyle">@null</item>
+        <item name="appButtonBarButtonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="App.Theme" parent="App.BaseTheme">
         <item name="android:windowBackground">@color/light_gray</item>
         <item name="android:colorBackground">@color/light_gray</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorAccentDark">@color/accent_dark</item>
+        <item name="colorAccentLight">@color/accent_light</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="App.Theme.NoTitle" parent="App.Theme">
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="ButtonStyle" parent="android:Widget.Button">
+        <item name="android:textColor">?colorAccent</item>
     </style>
 
 </resources>
